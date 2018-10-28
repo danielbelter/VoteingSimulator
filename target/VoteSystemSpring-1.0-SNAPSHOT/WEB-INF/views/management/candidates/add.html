@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PAGE</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+          crossorigin="anonymous">
+</head>
+<body>
+<div th:replace="fragments/menu" class="mb-5">MENU</div>
+<br/><br/>
+<div class="container">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2">
+            <form th:action="@{/candidates/add}" method="post" th:object="${candidate}" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name" class="h2 text-info">Name:</label>
+                    <input id="name" type="text" th:field="*{name}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="surname" class="h2 text-info">Surname:</label>
+                    <input id="surname" type="text" th:field="*{surname}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Gender</label>
+                    <ul class="list-group">
+                        <li class="list-group-item" th:each="g : ${genders}">
+                            <input type="radio" th:field="*{gender}" th:value="${g}" style="width: 20px; height: 20px">
+                            <label th:text="${g}"></label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="form-group">
+                    <label>Constituency</label>
+                    <select th:field="*{constituency.id}">
+                        <option th:each="c : ${constituencies}" th:value="${c.id}" th:text="${c.name}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Photo:</label>
+                    <input type="file" th:field="*{multipartFile}" />
+                </div>
+
+
+
+                <div class="form-group">
+                    <input type="submit" value="Send" class="btn btn-success">
+                    <input type="reset" value="Reset" class="btn btn-danger">
+                    <a class="btn btn-primary" href="/candidates">CANDIDATES</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+com\example\configuration\AppConfiguration.class
+com\example\controllers\MyController.class
+com\example\model\Candidate$CandidateBuilder.class
+com\example\configuration\AppInitializer.class
+com\example\model\Constituency.class
+com\example\model\Voter.class
+com\example\model\Voter$VoterBuilder.class
+com\example\model\Candidate.class
+com\example\model\Gender.class
+com\example\configuration\JpaConfiguration.class
+com\example\App.class
+com\example\model\Constituency$ConstituencyBuilder.class
